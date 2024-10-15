@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: left;
+            align-items: left;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        .side-image {
+            flex: 2;
+            background-size: cover;
+            background-position: right;
+            height: 100%;
+        }
+
+        .side-image.right {
+            background-image: url('/static/img/23.jpg');
+        }
+
+        .content {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        #chatbox {
+            height: 70vh;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+            box-sizing: border-box;
+        }
+
+        #user-input {
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            padding: 8px;
+            width: calc(100% - 16px);
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #user-input:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        #send-button {
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        #send-button:hover {
+            background-color: #45a049;
+        }
+
+        .header__nav {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: left;
+            padding: 10px 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-sizing: border-box;
+        }
+
+        .header__menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu__item {
+            position: relative;
+            margin: 0 10px;
+        }
+
+        .menu__link {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .menu__link.active {
+            font-weight: bold;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .menu__item:hover .dropdown-content {
+            display: block;
+        }
+
+        .header__logout {
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <nav class="header__nav">
+                <div class="header__logo">
+                    <img src="static/assets/img/logo.svg" alt="Logo">
+                </div>
+                <div class="header__nav__content">
+                    <ul class="header__menu">
+                        <li class="menu__item">
+                            <a href="{{ ('home') }}" class="menu__link active">Home</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="javascript:void(0)" class="menu__link">Services</a>
+                            <div class="dropdown-content">
+                                <a href="{{('input2')}}">Crop Yield</a><br>
+                            <a href="{{('input3')}}">Crop Water</a><br>
+                            <a href="{{('input1')}}">Crop Fertilizer</a><br>
+                            <a href="{{('input4')}}">Crop Recommendation</a><br>
+                            
+                            <a href="{{('weather')}}">wheather</a>
+                            </div>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{{ ('product') }}" class="menu__link">Product</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{{ ('') }}" class="menu__link">Team</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{{ ('blog') }}" class="menu__link">About</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{{ ('chatbot') }}" class="menu__link">Help AI</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{{ ('contact') }}" class="menu__link">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="header__logout">
+                        <a href="{{ ('login') }}" class="btn btn__signup">
+                            <i class="fas fa-user-plus"></i> LOGOUT
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <div class="chat-container">
+                <div class="bg-white p-6 rounded-lg shadow-lg mt-8">
+                    <h1 class="text-2xl font-bold mb-4">Chatbot</h1>
+                    <div id="chatbox" class="mb-4">
+                        <div id="chat-log"></div>
+                    </div>
+                    <input type="text" id="user-input" class="border p-2 mb-2" placeholder="Type your message...">
+                    <button id="send-button" onclick="sendMessage()" class="bg-blue-500 text-white p-2">Send</button>
+                </div>
+            </div>
+        </div>
+        <div class="side-image right"></div>
+    </div>
+
+    <script>
+        function appendMessage(sender, message) {
+            const chatLog = document.getElementById('chat-log');
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('my-2');
+            messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+            chatLog.appendChild(messageElement);
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+
+        function sendMessage() {
+            const userInput = document.getElementById('user-input');
+            const message = userInput.value.trim();
+            if (message === '') return;
+
+            appendMessage('You', message);
+
+            fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                appendMessage('Chatbot', data.response);
+                userInput.value = '';
+            });
+        }
+    </script>
+</body>
+</html>

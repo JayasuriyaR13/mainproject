@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Consumption Prediction</title>
+    <link rel="stylesheet" href="static/assets/css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/static/img/24.jpeg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Times New Roman', Times, serif;
+            animation: changeBackground 100s infinite;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes changeBackground {
+            0% { background-image: url('/static/img/1.jpeg'); }
+            25% { background-image: url('/static/img/2.jpeg'); }
+            50% { background-image: url('/static/img/3.jpeg'); }
+            75% { background-image: url('/static/img/16.jpg'); }
+            100% { background-image: url('/static/img/12.jpg'); }
+        }
+
+        .header__nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .header__logo img {
+            height: 40px;
+        }
+
+        .header__menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu__item {
+            margin: 0 10px;
+        }
+
+        .menu__link {
+            text-decoration: none;
+            color: black; /* Changed color to black */
+            font-weight: bold; /* Made text bold */
+            padding: 10px;
+        }
+
+        .menu__link:hover {
+            color: #007bff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px; /* Increased max-width */
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px; /* Increased padding */
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            margin: 80px auto 20px auto;
+        }
+
+        .container h1 {
+            font-size: 2.5rem; /* Increased font size */
+            margin-bottom: 1rem;
+            text-align: left;
+            color: black; /* Changed color to black */
+            font-weight: bold; /* Made text bold */
+        }
+
+        .container label {
+            font-size: 2.5rem; /* Increased font size */
+            margin-top: 1rem;
+            display: block;
+            color: black; /* Changed color to black */
+            font-weight: bold; /* Made text bold */
+        }
+
+        .container input,
+        .container select {
+            font-size: 2.2rem; /* Increased font size */
+            padding: 0.7rem; /* Increased padding */
+            margin-top: 0.5rem;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .container input[type="submit"] {
+            font-size: 1.5rem; /* Increased font size */
+            padding: 0.7rem 1.2rem; /* Increased padding */
+            margin-top: 1.5rem;
+            display: block;
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .container input[type="submit"]:hover {
+            background-color: #0056b3; /* Darker shade of blue on hover */
+        }
+
+        li a:hover, .dropdown:hover .dropbtn {
+            background-color: red;
+        }
+        
+        li.dropdown {
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="header__nav">
+            <div class="header__logo">
+                <img src="static/assets/img/logo.svg" alt="Logo">
+            </div>
+            <div class="header__nav__content">
+                <ul class="header__menu">
+                    <li class="menu__item">
+                        <a href="{{('home')}}" class="menu__link active">Home</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropbtn">Services</a>
+                        <div class="dropdown-content">
+                            <a href="{{('input2')}}">Crop Yield</a><br>
+                            <a href="{{('input3')}}">Crop Water</a><br>
+                            <a href="{{('input1')}}">Crop Fertilizer</a><br>
+                            <a href="{{('input4')}}">Crop Recommendation</a><br>
+                          
+                            <a href="{{('weather')}}">Weather</a>
+                        </div>
+                    </li>
+                    <li class="menu__item">
+                        <a href="{{('product')}}" class="menu__link">Product</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="{{('')}}" class="menu__link">Team</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="{{('blog')}}" class="menu__link">About</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="{{('contact')}}" class="menu__link">Contact</a>
+                    </li>
+                </ul>
+                <div class="header__signup">
+                    <a href="{{('login')}}" class="btn__signup">
+                        <i class="fas fa-user-plus"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="text-3xl font-bold mb-4 text-black">Water Consumption Prediction</h1>
+        <form action="/crop" method="post" class="space-y-4">
+            <div>
+                <label for="algorithm" class="block text-lg font-semibold text-black">Choose Algorithm:</label>
+                <select id="algorithm" name="algorithm" required class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    <option value="random">Random Forest</option>
+                    <option value="knn">KNN</option>
+                    
+                </select>
+            </div>
+
+            <div>
+                <label for="soil_type" class="block text-lg font-semibold text-black">Soil Type:</label>
+                <select id="soil_type" name="soil_type" required class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    <option value="0">Alkaline</option>
+                    <option value="1">Black lava soil</option>
+                    <option value="2">Chalky (Calcareous)</option>
+                    <option value="3">Clay</option>
+                    <option value="4">Loamy</option>
+                    <option value="5">Nitrogenous</option>
+                    <option value="6">Saline</option>
+                    <option value="7">Sandy</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="ph_level" class="block text-lg font-semibold text-black">pH Level:</label>
+                <input type="text" id="ph_level" name="ph_level" required class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center">
+            </div>
+            
+            <div>
+                <label for="organic_matter" class="block text-lg font-semibold text-black">Organic Matter (%):</label>
+                <input type="text" id="organic_matter" name="organic_matter" required class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center">
+            </div>
+            
+            <div>
+                <label for="nitrogen_content" class="block text-lg font-semibold text-black">Nitrogen Content (kg/ha):</label>
+                <input type="text" id="nitrogen_content" name="nitrogen_content" required class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center">
+            </div>
+
+            <div>
+                <label for="phosphorus_content" class="block text-lg font-semibold text-black">Phosphorus Content (kg/ha):</label>
+                <input type="text" id="phosphorus_content" name="phosphorus_content" required class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center">
+            </div>
+
+            <div>
+                <label for="potassium_content" class="block text-lg font-semibold text-black">Potassium Content (kg/ha):</label>
+                <input type="text" id="potassium_content" name="potassium_content" required class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center">
+            </div>
+
+            <div>
+                <label for="crop" class="block text-lg font-semibold text-black">Crop:</label>
+                <select id="crop" name="crop" required class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    <option value="0">Pomegranate</option>
+                    <option value="1">Opium</option>
+                    <option value="2">Mango</option>
+                    <option value="3">Gram</option>
+                    <option value="4">Onion</option>
+                    <option value="5">Garlic</option>
+                    <option value="6">Fennel</option>
+                    <option value="7">Mustard</option>
+                    <option value="8">Chilli</option>
+                    <option value="9">Bajra</option>
+                    <option value="10">Pulses</option>
+                    <option value="11">Cumin</option>
+                    <option value="12">Sugarcane</option>
+                    <option value="13">Citrus</option>
+                    <option value="14">Maize</option>
+                    <option value="15">Cotton</option>
+                    <option value="16">Wheat</option>
+                    <option value="17">Barley</option>
+                    <option value="18">Coriander</option>
+                    <option value="19">Tomato</option>
+                    <option value="20">Oilseeds</option>
+                    <option value="21">Fenugreek</option>
+                    <option value="22">Guava</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="irrigation_method" class="block text-lg font-semibold text-black">Irrigation Method:</label>
+                <select id="irrigation_method" name="irrigation_method" required class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    <option value="0">Canal Irrigation</option>
+                    <option value="1">Drip Irrigation</option>
+                    <option value="2">Sprinkler Irrigation</option>
+                    <option value="3">Tube Well</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="water_availability" class="block text-lg font-semibold text-black">Water Availability (liters/hectare):</label>
+                <input type="text" id="water_availability" name="water_availability" required class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center">
+            </div>
+            
+            <div>
+                <input type="submit" value="Predict" class="mt-4 py-2 px-6 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-600 cursor-pointer">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

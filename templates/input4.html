@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crop Recommendation</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="static/assets/css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/static/img/44.jpeg'); /* Default background image */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            margin: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Times New Roman', Times, serif;
+            animation: changeBackground 100s infinite;
+        }
+
+        @keyframes changeBackground {
+            0% { background-image: url('/static/img/44.jpeg'); }
+            25% { background-image: url('/static/img/45.jpeg'); }
+            50% { background-image: url('/static/img/43.jpg'); }
+            75% { background-image: url('/static/img/36.png'); }
+            100% { background-image: url('/static/img/46.jpg'); }
+        }
+
+        .header__nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .header__menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .menu__item {
+            margin: 0 10px;
+        }
+        .menu__link {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: black;
+        }
+        .menu__link.active {
+            font-weight: bold;
+        }
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            margin-top:100px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        li a:hover, .dropdown:hover .dropbtn {
+            background-color: red;
+        }
+        
+        li.dropdown {
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        
+        .dropdown-content a:hover {background-color: #f1f1f1;}
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .header__signup .btn__signup {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: black;
+        }
+
+        h1, .header__nav, .header__signup a {
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            color: black;
+        }
+
+        .form-label {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: black;
+        }
+
+        .form-input, .form-select {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: black;
+        }
+
+        .form-submit {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="header__nav w-120">
+                <div class="header__logo">
+                    <img src="static/assets/img/logo.svg" alt="Logo">
+                </div>
+                <div class="header__nav__content">
+                    <div class="nav-close-icon"></div>
+                    <ul class="header__menu">
+                        <li class="menu__item">
+                            <a href="{{('home')}}" class="menu__link active">Home</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropbtn">Services</a>
+                            <div class="dropdown-content">
+                                <a href="{{('input2')}}">Crop Yield</a>
+                                <a href="{{('input3')}}">Crop Water</a>
+                                <a href="{{('input1')}}">Crop Fertilizer</a>
+                                <a href="{{('input4')}}">Crop Recommendation</a>
+                                
+                                <a href="{{('weather')}}">Weather</a>
+                            </div>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{{('product')}}" class="menu__link">Product</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{{('')}}" class="menu__link">Team</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{{('blog')}}" class="menu__link">About</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{{('contact')}}" class="menu__link">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="header__signup">
+                        <a href="{{('login')}}" class="btn__signup">
+                            <i class="fas fa-user-plus"></i> Logout
+                        </a>
+                    </div>
+                </div>
+                
+            </nav>
+        </header>
+        <div class="bg-gray-100 bg-opacity-90 p-8 rounded-lg shadow-lg w-full max-w-lg">
+            <h1 class="text-4xl font-bold mb-6 text-center text-black">Crop Recommendation</h1>
+            <form action="/predicting" method="post" class="space-y-6">
+                <div>
+                    <label for="soil_type" class="form-label">Soil Type:</label>
+                    <select id="soil_type" name="soil_type" required class="form-select mt-1 block w-full py-3 px-4 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="Clay">Clay</option>
+                        <option value="Sandy">Sandy</option>
+                        <option value="Loamy">Loamy</option>
+                        <option value="Silty">Silty</option>
+                        <option value="Peaty">Peaty</option>
+                        <option value="Chalky">Chalky</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="ph_level" class="form-label">pH Level:</label>
+                    <input type="text" id="ph_level" name="ph_level" required class="form-input mt-1 block w-full py-3 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center">
+                </div>
+
+                <div>
+                    <label for="organic_matter" class="form-label">Organic Matter (%):</label>
+                    <input type="text" id="organic_matter" name="organic_matter" required class="form-input mt-1 block w-full py-3 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center">
+                </div>
+
+                <div>
+                    <label for="nitrogen_content" class="form-label">Nitrogen Content (kg/ha):</label>
+                    <input type="text" id="nitrogen_content" name="nitrogen_content" required class="form-input mt-1 block w-full py-3 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center">
+                </div>
+
+                <div>
+                    <label for="phosphorus_content" class="form-label">Phosphorus Content (kg/ha):</label>
+                    <input type="text" id="phosphorus_content" name="phosphorus_content" required class="form-input mt-1 block w-full py-3 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center">
+                </div>
+
+                <div>
+                    <label for="potassium_content" class="form-label">Potassium Content (kg/ha):</label>
+                    <input type="text" id="potassium_content" name="potassium_content" required class="form-input mt-1 block w-full py-3 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center">
+                </div>
+
+                <div>
+                    <label for="irrigation_method" class="form-label">Irrigation Method:</label>
+                    <select id="irrigation_method" name="irrigation_method" required class="form-select mt-1 block w-full py-3 px-4 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="Drip Irrigation">Drip Irrigation</option>
+                        <option value="Tube Well">Tube Well</option>
+                        <option value="Sprinkler Irrigation">Sprinkler Irrigation</option>
+                        <option value="Canal Irrigation">Canal Irrigation</option>
+                    </select>
+                </div>
+
+                <div class="flex justify-center">
+                    <input type="submit" value="Submit" class="form-submit mt-6 bg-blue-600 hover:bg-blue-700 font-bold py-3 px-6 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

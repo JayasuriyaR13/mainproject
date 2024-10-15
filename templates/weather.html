@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/Weather/style.css">
+    <style>
+        body {
+            margin: 20px;
+        }
+        .containers {
+            text-align: left;
+        }
+        li a:hover, .dropdown:hover .dropbtn {
+            background-color: red;
+        }
+        li.dropdown {
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="containers">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">
+                    <img src="static/assets/img/logo.svg" alt="Logo" style="height: 40px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="header__menu navbar-nav">
+                        <li class="menu__item nav-item">
+                            <a href="{{('home')}}" class="menu__link nav-link active">Home</a>
+                        </li>
+                        <li class="dropdown nav-item">
+                            <a href="javascript:void(0)" class="dropbtn nav-link">Services</a>
+                            <div class="dropdown-content">
+                                <a href="{{('input2')}}">Crop Yield</a><br>
+                                <a href="{{('input3')}}">Crop Water</a><br>
+                                <a href="{{('input1')}}">Crop Fertilizer</a><br>
+                                <a href="{{('input4')}}">Crop Recommendation</a><br>
+                               
+                                <a href="{{('weather')}}">wheather</a>
+                            </div>
+                        </li>
+                        <li class="menu__item nav-item">
+                            <a href="{{('product')}}" class="menu__link nav-link">Product</a>
+                        </li>
+                        <li class="menu__item nav-item">
+                            <a href="{{('')}}" class="menu__link nav-link">Team</a>
+                        </li>
+                        <li class="menu__item nav-item">
+                            <a href="{{('blog')}}" class="menu__link nav-link">About</a>
+                        </li>
+                        <li class="menu__item nav-item">
+                            <a href="{{('chatbot')}}" class="menu__link nav-link">Help AI</a>
+                        </li>
+                        <li class="menu__item nav-item">
+                            <a href="{{('contact')}}" class="menu__link nav-link">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="header__signup ms-auto">
+                        <a href="{{('login')}}" class="btn btn__signup btn-primary">
+                            <i class="fas fa-user-plus"></i> LOGOUT
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <div class="container pb-3">
+        <div class="row">
+            <div class="col">
+                <form>
+                    <br>
+                    <h3 class="alert text-light text-center bg-primary">Weather</h3>
+                    <div class="mb-3">
+                        <select name="countrylist" id="countrylist" class="form-select">
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <select name="statelist" id="statelist" class="form-select" disabled>
+                            <option value="">Select State</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <select name="citylist" id="citylist" class="form-select" disabled>
+                            <option value="">Select City</option>
+                        </select>
+                    </div>
+                </form>
+                <div class="d-flex justify-content-center align-items-center" id="weatherwidget">
+                </div>
+            </div>
+        </div>
+    </div>
+            
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlT4ILUsL5COmX6RMpLrdkIQ2ZW0kh1haFlkYtAiObLI0MfnQ03JO8R1Fdm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVDBZ5mC7vb+zA1smKh3O30D9s08SFvcj4/5PCd5jcTcTp0iNmsW44RaXdv71Mxt" crossorigin="anonymous"></script>
+    <script src="static/Weather/main.js"></script>
+</body>
+</html>

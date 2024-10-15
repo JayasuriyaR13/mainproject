@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="static/assets/css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/static/img/44.jpeg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            animation: changeBackground 100s infinite;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        @keyframes changeBackground {
+            0% { background-image: url('/static/img/44.jpeg'); }
+            25% { background-image: url('/static/img/45.jpeg'); }
+            50% { background-image: url('/static/img/43.jpg'); }
+            75% { background-image: url('/static/img/36.png'); }
+            100% { background-image: url('/static/img/46.jpg'); }
+        }
+
+        li a:hover, .dropdown:hover .dropbtn {
+            background-color: red;
+        }
+        
+        li.dropdown {
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        
+        .dropdown-content a:hover {background-color: #f1f1f1;}
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        h1, .header__nav, .header__signup a, .menu__link {
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            color: black;
+        }
+
+        .form-label {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: black;
+        }
+
+        .form-input, .form-select {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: black;
+        }
+
+        .form-submit {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-opacity-75">
+    <div class="container">
+        <header>
+            <nav class="header__nav">
+                <div class="header__logo">
+                    <img src="static/assets/img/logo.svg" alt="Logo">
+                </div>
+                <div class="header__nav__content">
+                    <ul class="header__menu">
+                        <li class="menu__item">
+                            <a href="{{('home')}}"class="menu__link active">Home</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropbtn">Services</a>
+                            <div class="dropdown-content">
+                                <a href="{{('input2')}}">Crop Yield</a><br>
+                                <a href="{{('input3')}}">Crop Water</a><br>
+                                <a href="{{('input1')}}">Crop Fertilizer</a><br>
+                                <a href="{{('input4')}}">Crop Recommendation</a><br>
+                             
+                                <a href="{{('weather')}}">Weather</a>
+                            </div>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{{('product')}}" class="menu__link">Product</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{{('')}}" class="menu__link">Team</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{{('blog')}}" class="menu__link">About</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{{('chatbot')}}" class="menu__link">Help AI</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{{('contact')}}" class="menu__link">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="header__signup">
+                        <a href="{{('login')}}" class="btn btn__signup">
+                            <i class="fas fa-user-plus"></i> LOGOUT
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </header> 
+        <div class="flex items-center justify-center">
+            <div class="bg-white bg-opacity-80 p-8 rounded-lg shadow-lg text-center max-w-md w-full">
+                <h1 class="text-3xl font-bold mb-4 text-black">Prediction Result</h1>
+                <h1 class="text-2xl text-black">
+                    <p>The predicted crop is:</p>
+                    <p class="mt-4 text-black-600">{{ prediction }}</p>
+                </h1>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

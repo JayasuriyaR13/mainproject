@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Additional CSS for animations and dropdown */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .product-card {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+<header>
+    <nav class="header__nav w-full bg-white shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="header__logo">
+                <img src="static/assets/img/logo.svg" alt="Logo" class="h-10">
+            </div>
+            <div class="header__nav__content flex items-center">
+                <ul class="header__menu flex space-x-6">
+                    <li class="menu__item">
+                        <a href="{{('home')}}" class="menu__link active text-gray-700">Home</a>
+                    </li>
+                    <li class="menu__item dropdown relative">
+                        <a href="javascript:void(0)" class="dropbtn text-gray-700">Services</a>
+                        <div class="dropdown-content absolute">
+                            <a href="{{('input2')}}">Crop Yield</a><br>
+                            <a href="{{('input3')}}">Crop Water</a><br>
+                            <a href="{{('input1')}}">Crop Fertilizer</a><br>
+                            <a href="{{('input4')}}">Crop Recommendation</a><br>
+                          
+                            <a href="{{('weather')}}">wheather</a>
+                        </div>
+                    </li>
+                    <li class="menu__item">
+                        <a href="{{('')}}" class="menu__link text-gray-700">Product</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="{{('')}}" class="menu__link text-gray-700">Team</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="{{('blog')}}" class="menu__link text-gray-700">About</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="{{('chatbot')}}" class="menu__link text-gray-700">Help AI</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="{{('contact')}}" class="menu__link text-gray-700">Contact</a>
+                    </li>
+                </ul>
+                <div class="header__signup ml-6">
+                    <a href="{{('login')}}" class="btn btn__signup bg-blue-600 text-white px-4 py-2 rounded">
+                        <i class="fas fa-user-plus"></i> LOGOUT
+                    </a>
+                </div>
+            </div>
+            <div class="hamburger-menu-wrap md:hidden">
+                <div class="hamburger-menu">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container mx-auto px-6 py-16">
+    <h1 class="text-4xl font-bold mb-12 text-center">Our Products</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="product-card bg-white p-6 rounded-lg shadow-lg">
+            <img src="static/img/32.png" alt="Product 1" class="w-full h-64 object-cover object-center mb-6">
+            <h2 class="text-2xl font-bold mb-2">Crop Fertilizer </h2>
+            <p class="text-gray-700 mb-4">Optimize fertilizer application by analyzing soil nutrient levels, crop nutrient requirements, and environmental factors, minimizing wastage and environmental impact.</p>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded">Learn More</button>
+        </div>
+        <div class="product-card bg-white p-6 rounded-lg shadow-lg">
+            <img src="static/img/39.jpg" alt="Product 2" class="w-full h-64 object-cover object-center mb-6">
+            <h2 class="text-2xl font-bold mb-2">  Crop Price Forecasting:</h2>
+            <p class="text-gray-700 mb-4">Forecast market prices based on historical trends, demand-supply dynamics, and external factors like weather events and policy changes, assisting farmers in marketing and pricing strategies.</p>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded">Learn More</button>
+        </div>
+        <div class="product-card bg-white p-6 rounded-lg shadow-lg">
+            <img src="static/img/3.jpeg" alt="Product 3" class="w-full h-64 object-cover object-center mb-6">
+            <h2 class="text-2xl font-bold mb-2">Crop Water Management: </h2>
+            <p class="text-gray-700 mb-4">Predict water requirements based on crop type, growth stage, soil moisture levels, and weather forecasts, ensuring efficient irrigation practices and water conservation.</p>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded">Learn More</button>
+        </div>
+        <div class="product-card bg-white p-6 rounded-lg shadow-lg">
+            <img src="static/img/47.jpg" alt="Product 4" class="w-full h-64 object-cover object-center mb-6">
+            <h2 class="text-2xl font-bold mb-2">Weather</h2>
+            <p class="text-gray-700 mb-4">A weather application integrated with the system provides real-time weather updates and forecasts, enabling farmers to adjust their farming practices promptly in response to changing weather conditions.</p>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded">Learn More</button>
+        </div>
+        <div class="product-card bg-white p-6 rounded-lg shadow-lg">
+            <img src="static/img/11.jpeg" alt="Product 5" class="w-full h-64 object-cover object-center mb-6">
+            <h2 class="text-2xl font-bold mb-2">Crop Yield Prediction: </h2>
+            <p class="text-gray-700 mb-4">Accurately forecast crop yields based on historical data and current environmental conditions, enabling farmers to plan planting schedules and optimize harvest expectations.</p>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded">Learn More</button>
+        </div>
+        <div class="product-card bg-white p-6 rounded-lg shadow-lg">
+            <img src="static/img/22.jpg" alt="Product 6" class="w-full h-64 object-cover object-center mb-6">
+            <h2 class="text-2xl font-bold mb-2">Help AI/chatbot</h2>
+            <p class="text-gray-700 mb-4">A chatbot for agriculture development assists farmers by providing real-time information on crop management, pest control, weather forecasts, soil health, and market prices. It enhances agricultural practices through accessible, instant support, improving productivity and decision-making.</p>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded">Learn More</button>
+        </div>
+        <div class="product-card bg-white p-6 rounded-lg shadow-lg">
+            <img src="static/img/43.jpg" alt="Product 7" class="w-full h-64 object-cover object-center mb-6">
+            <h2 class="text-2xl font-bold mb-2">Crop Recommendation:  </h2>
+            <p class="text-gray-700 mb-4">Recommend suitable crop varieties based on soil quality, climate suitability, and market demand, aiding farmers in making informed planting decisions.</p>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded">Learn More</button>
+        </div>
+    </div>
+   
+</div>
+</main>
+
+</body>
+</html>
+
+ 

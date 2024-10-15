@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fertilizer Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="static/assets/css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/static/img/35.jpg'); /* Default background image */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            margin: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Time Roman ', sans-serif; /* Changed font */
+            animation: changeBackground 100s infinite;
+            color: #0044cc; /* Changed text color */
+        }
+
+        @keyframes changeBackground {
+            0% { background-image: url('/static/img/33.png'); }
+            25% { background-image: url('/static/img/31.png'); }
+            50% { background-image: url('/static/img/32.png'); }
+            75% { background-image: url('/static/img/34.jpg'); }
+            100% { background-image: url('/static/img/35.jpg'); }
+        }
+
+        .header__nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .header__menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu__item {
+            margin: 0 10px;
+            position: relative; /* Position relative for dropdown positioning */
+        }
+
+        .menu__link {
+            text-decoration: none;
+            color: #0044cc; /* Changed text color */
+            padding: 8px 16px;
+        }
+
+        .menu__link.active {
+            font-weight: bold;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            margin-top: 10px;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .menu__item:hover .dropdown-content {
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            margin-top: 400px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .form-container {
+            font-size: 2.5rem; /* Increased font size */
+            width: 100%; /* Ensures the form container takes up full width */
+            max-width: 600px; /* Increased max-width */
+        }
+
+        .form-container label,
+        .form-container input,
+        .form-container select,
+        .form-container button {
+            font-size: 2rem; /* Increased font size */
+            font-family: 'Roboto', sans-serif; /* Changed font */
+            color: black; /* Changed text color */
+        }
+
+        .form-container label {
+            margin-bottom: 0.5rem;
+        }
+
+        .form-container input,
+        .form-container select,
+        .form-container button {
+            padding: 0.5rem;
+        }
+
+        .form-container input::placeholder,
+        .form-container select::placeholder {
+            font-size: 1.5rem;
+        }
+
+        .form-container .block {
+            display: block;
+        }
+
+        .form-container .text-lg {
+            font-size: 2.25rem;
+        }
+
+        .form-container .text-center {
+            text-align: center;
+        }
+
+        .form-container .mt-1 {
+            margin-top: 0.25rem;
+        }
+
+        .form-container .mt-4 {
+            margin-top: 1rem;
+        }
+
+        .form-container .py-2 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .form-container .px-3 {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+
+        .form-container .border {
+            border-width: 1px;
+        }
+
+        .form-container .border-gray-300 {
+            border-color: #d1d5db;
+        }
+
+        .form-container .rounded-md {
+            border-radius: 0.375rem;
+        }
+
+        .form-container .shadow-sm {
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .form-container .focus\\:outline-none {
+            outline: 0;
+        }
+
+        .form-container .focus\\:ring-indigo-500 {
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.5);
+        }
+
+        .form-container .focus\\:border-indigo-500 {
+            border-color: #6366f1;
+        }
+
+        .form-container .bg-white {
+            background-color: #fff;
+        }
+
+        .form-container .bg-opacity-80 {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-container .bg-blue-600 {
+            background-color: #2563eb;
+        }
+
+        .form-container .hover\\:bg-blue-700:hover {
+            background-color: #1d4ed8;
+        }
+
+        .form-container .text-white {
+            color: #fff;
+        }
+
+        .form-container .font-bold {
+            font-weight: 700;
+        }
+
+        .form-container .rounded {
+            border-radius: 0.25rem;
+        }
+
+        .form-container .focus\\:ring-2 {
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="header__nav w-120">
+                <div class="header__logo">
+                    <img src="static/assets/img/logo.svg" alt="Logo">
+                </div>
+                <div class="header__nav__content">
+                    <div class="nav-close-icon"></div>
+                    <ul class="header__menu">
+                        <li class="menu__item">
+                            <a href="{{('home')}}" class="menu__link active">Home</a>
+                        </li>
+                        <li class="menu__item dropdown">
+                            <a href="javascript:void(0)" class="menu__link">Services</a>
+                            <div class="dropdown-content">
+                                <a href="{{('input2')}}">Crop Yield</a><br>
+                                <a href="{{('input3')}}">Crop Water</a><br>
+                                <a href="{{('input1')}}">Crop Fertilizer</a><br>
+                                <a href="{{('input4')}}">Crop Recommendation</a><br>
+                                
+                                <a href="{{('weather')}}">Weather</a>
+                            </div>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{{('product')}}" class="menu__link">Product</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{{('')}}" class="menu__link">Team</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{{('blog')}}" class="menu__link">About</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{{('chatbot')}}" class="menu__link">Help AI</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{{('contact')}}" class="menu__link">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="header__signup">
+                        <a href="{{('login')}}" class="btn btn__signup">
+                            <i class="fas fa-user-plus"></i> LOGOUT
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-orange-400 to-blue-500">
+            <div class="bg-white bg-opacity-80 p-8 rounded-lg shadow-lg w-full max-w-md form-container">
+                <h1 class="text-3xl font-bold mb-6 text-center text-black">Fertilizer Prediction</h1>
+                <form action="/predicted" method="post" class="space-y-4">
+                    <div>
+                        <label for="temp" class="block text-lg font-medium">Temperature:</label>
+                        <input type="number" name="temp" id="temp" placeholder="Enter the value" required class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center">
+                    </div>
+
+                    <div>
+                        <label for="humid" class="block text-lg font-medium">Humidity in %:</label>
+                        <input type="number" name="humid" id="humid" placeholder="Enter the value" required class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center">
+                    </div>
+
+                    <div>
+                        <label for="mois" class="block text-lg font-medium">Moisture:</label>
+                        <input type="number" name="mois" id="mois" placeholder="Enter the value" required class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center">
+                    </div>
+
+                    <div>
+                        <label for="soil" class="block text-lg font-medium">Soil Type:</label>
+                        <select name="soil" id="soil" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center">
+                            <option value="0">Black</option>
+                            <option value="1">Clayey</option>
+                            <option value="2">Loamy</option>
+                            <option value="3">Red</option>
+                            <option value="4">Sandy</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="crop" class="block text-lg font-medium">Crop Type:</label>
+                        <select name="crop" id="crop" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center">
+                            <option value="0">Barley</option>
+                            <option value="1">Cotton</option>
+                            <option value="2">Ground Nuts</option>
+                            <option value="3">Maize</option>
+                            <option value="4">Millets</option>
+                            <option value="5">Oil Seeds</option>
+                            <option value="6">Paddy</option>
+                            <option value="7">Pulses</option>
+                            <option value="8">Sugarcane</option>
+                            <option value="9">Tobacco</option>
+                            <option value="10">Wheat</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="nitro" class="block text-lg font-medium">Nitrogen:</label>
+                        <input type="number" name="nitro" id="nitro" placeholder="Enter the value" required class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center">
+                    </div>
+
+                    <div>
+                        <label for="pota" class="block text-lg font-medium">Potassium:</label>
+                        <input type="number" name="pota" id="pota" placeholder="Enter the value" required class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center">
+                    </div>
+
+                    <div>
+                        <label for="phos" class="block text-lg font-medium">Phosphorous:</label>
+                        <input type="number" name="phos" id="phos" placeholder="Enter the value" required class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-center">
+                    </div>
+
+                    <div class="flex justify-center">
+                        <input type="submit" value="Submit" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
