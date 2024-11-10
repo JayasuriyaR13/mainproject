@@ -14,7 +14,7 @@
 - Crop Recommendation: Enhances crop recommendation by analyzing soil types to suggest the best crops for cultivation. Aims for sustainable crop growth by recommending crops that are best suited for the soil and environmental conditions.
 
 - Weather Application: Integrates weather analysis to provide day-to-day climate updates. Helps predict weather conditions in advance to assist with decision-making and crop planning. Aims to prevent losses due to bad climate conditions by improving resource management (water, fertilizer, etc.) and ensuring timely actions.
-
+  
 ## Installation
 open main project
 
