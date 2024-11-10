@@ -1,7 +1,7 @@
 # mainproject
 Hello everyone!, welecome 
 My project in Masters computer Applications(MCA)
-main project Title:**"Reviews on crop prediction using Machine Learning in Agriculture" **
+main project Title:"#**Reviews on crop prediction using Machine Learning in Agriculture**" 
 During date: 2024 March to 2024 August
 
 Desscription : My project about the crop prediction using machine learning algorithms for Random forest and decision trees Algorithms, I developing website and webpages for crop prediction. the using technologies in the Frontend:Html, css and Javascript, Backend:python, Database:MYSQL, Dataset:csv file format and csv(comma seperated values),Tools: visual code studio, Anaconda prompt, mysql server xamp, browser.
