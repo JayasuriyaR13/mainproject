@@ -67,6 +67,11 @@ HARDWARE REQUIREMENTS
   ![image](https://github.com/user-attachments/assets/1aca30f3-1636-4f8f-b840-13c73122be38)
 - ![image](https://github.com/user-attachments/assets/51fd29cd-bb5d-4c38-924c-1ebc87b6bc3a)
 - ![image](https://github.com/user-attachments/assets/d8854cf9-2b81-4683-97f0-76f9918c3ea0)
+- ![image](https://github.com/user-attachments/assets/1cb3936d-e60a-42a4-b98e-5363e1a501f9)
+- ![image](https://github.com/user-attachments/assets/147f5de2-c026-4032-b1db-4fb5431e28ef)
+- ![image](https://github.com/user-attachments/assets/bae09392-d383-406f-99b3-9b6a0e8520bc)
+
+
 
 
 ## Demo
