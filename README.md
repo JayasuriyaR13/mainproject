@@ -33,7 +33,6 @@ Helps predict weather conditions in advance to assist with decision-making and c
 Aims to prevent losses due to bad climate conditions by improving resource management (water, fertilizer, etc.) and ensuring timely actions.
            ![image](https://github.com/user-attachments/assets/f00a6c9c-166b-4a8b-a789-6541636698c7)
            ![image](https://github.com/user-attachments/assets/2479b266-4066-49d4-b664-9f71dbb3cef4)
-
            ![image](https://github.com/user-attachments/assets/68171848-d521-4dbf-9c9f-db1fe278aaf3)
 
            
