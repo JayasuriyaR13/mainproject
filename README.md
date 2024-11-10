@@ -38,7 +38,6 @@ Aims to prevent losses due to bad climate conditions by improving resource manag
 ![image](https://github.com/user-attachments/assets/03bd3ffe-aa61-44eb-91aa-24c1dce89de5)
 
 ![image](https://github.com/user-attachments/assets/51fd29cd-bb5d-4c38-924c-1ebc87b6bc3a)
-![image](https://github.com/user-attachments/assets/03bd3ffe-aa61-44eb-91aa-24c1dce89de5)
 
 ![image](https://github.com/user-attachments/assets/1aca30f3-1636-4f8f-b840-13c73122be38)
 ![image](https://github.com/user-attachments/assets/9a28ba9a-2fd4-4417-9434-0348f986a672)
